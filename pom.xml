@@ -152,15 +152,14 @@
             <goal>deploy</goal>
          </goals>
       </execution>
-   </executions>
-   <configuration>
-      <serverId>nexus</serverId>
-      <nexusUrl>http://http://192.168.33.10:8081/nexus/</nexusUrl>
-      <skipStaging>true</skipStaging>
-   </configuration>
-</plugin>
-            
-        <extensions>
+      </executions>
+       <configuration>
+         <serverId>nexus</serverId>
+         <nexusUrl>http://http://192.168.33.10:8081/nexus/</nexusUrl>
+         <skipStaging>true</skipStaging>
+       </configuration>
+      </plugin>
+         <extensions>
             <extension>
                 <!-- this extension is required by wagon in order to pass the proxy -->
                 <!-- cf. http://jira.codehaus.org/browse/MNG-5237 -->
