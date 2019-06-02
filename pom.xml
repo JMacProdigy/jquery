@@ -23,7 +23,15 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-
+    
+<distributionManagement>
+   <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <url>http://http://192.168.33.10:8081/nexus/content/repositories/snapshots</url>
+   </snapshotRepository>
+</distributionManagement>
+    
+    
     <scm>
         <url>http://github.com/webjars/jquery</url>
         <connection>scm:git:https://github.com/webjars/jquery.git</connection>
@@ -70,6 +78,8 @@
                     </execution>
                 </executions>
             </plugin>
+            
+            
 
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -109,7 +119,7 @@
                 </executions>
             </plugin>
 
-            <plugin>
+   <!--         <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>2.5.3</version>
@@ -127,7 +137,29 @@
                 </configuration>
             </plugin>
         </plugins>
-        <extensions>
+
+
+-->
+            <plugin>
+   <groupId>org.sonatype.plugins</groupId>
+   <artifactId>nexus-staging-maven-plugin</artifactId>
+   <version>1.5.1</version>
+   <executions>
+      <execution>
+         <id>default-deploy</id>
+         <phase>deploy</phase>
+         <goals>
+            <goal>deploy</goal>
+         </goals>
+      </execution>
+      </executions>
+       <configuration>
+         <serverId>nexus</serverId>
+         <nexusUrl>http://http://192.168.33.10:8081/nexus/</nexusUrl>
+         <skipStaging>true</skipStaging>
+       </configuration>
+      </plugin>
+         <extensions>
             <extension>
                 <!-- this extension is required by wagon in order to pass the proxy -->
                 <!-- cf. http://jira.codehaus.org/browse/MNG-5237 -->
